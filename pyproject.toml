@@ -1,0 +1,68 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "zenodo2bib"
+dynamic = ["version"]
+description = ''
+readme = "README.md"
+requires-python = ">=3.8"
+license = "MIT"
+keywords = []
+authors = [
+  { name = "Alexander Puck Neuwirth", email = "alexander@neuwirth-informatik.de" },
+]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Programming Language :: Python :: Implementation :: CPython",
+  "Programming Language :: Python :: Implementation :: PyPy",
+]
+dependencies = [
+  "requests",
+]
+
+[project.scripts]
+zenodo2bib = "zenodo2bib:main"
+
+[project.urls]
+Documentation = "https://github.com/APN-Pucky/zenodo2bib#readme"
+Issues = "https://github.com/APN-Pucky/zenodo2bib/issues"
+Source = "https://github.com/APN-Pucky/zenodo2bib"
+
+[tool.hatch.version]
+path = "src/zenodo2bib/__about__.py"
+
+[tool.hatch.envs.types]
+extra-dependencies = [
+  "mypy>=1.0.0",
+]
+[tool.hatch.envs.types.scripts]
+check = "mypy --install-types --non-interactive {args:src/zenodo2bib tests}"
+
+[tool.coverage.run]
+source_pkgs = ["zenodo2bib", "tests"]
+branch = true
+parallel = true
+omit = [
+  "src/zenodo2bib/__about__.py",
+]
+
+[tool.coverage.paths]
+zenodo2bib = ["src/zenodo2bib", "*/zenodo2bib/src/zenodo2bib"]
+tests = ["tests", "*/zenodo2bib/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
