@@ -43,10 +43,34 @@ $ zenodo2bib 23666615
 
 ```console
 $ zenodo2bib "https://zenodo.org/records/23666615"
+@software{poinsinet_de_sivry_houle_2026_23666615,
+  author       = {Poinsinet de Sivry-Houle, Martin},
+  title        = {RosettaX: reproducible flow-cytometry calibration
+                   workflows
+                  },
+  month        = oct,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {v0.10.8},
+  doi          = {10.5281/zenodo.23666615},
+  url          = {https://doi.org/10.5281/zenodo.23666615},
+}
 ```
 
 ```console
 $ zenodo2bib "10.5281/zenodo.23666615"
+@software{poinsinet_de_sivry_houle_2026_23666615,
+  author       = {Poinsinet de Sivry-Houle, Martin},
+  title        = {RosettaX: reproducible flow-cytometry calibration
+                   workflows
+                  },
+  month        = oct,
+  year         = 2026,
+  publisher    = {Zenodo},
+  version      = {v0.10.8},
+  doi          = {10.5281/zenodo.23666615},
+  url          = {https://doi.org/10.5281/zenodo.23666615},
+}
 ```
 
 Anything else is treated as a free-text search against the Zenodo search API, printing a BibTeX entry for each matching record:

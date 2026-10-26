@@ -13,7 +13,18 @@ RECORD_ID_PATTERNS = [
     re.compile(r"zenodo\.(\d+)", re.IGNORECASE),
     re.compile(r"zenodo\.org/records?/(\d+)", re.IGNORECASE),
 ]
-
+ 
+def latest_zenodo_record_id(record_id: str) -> str:
+    """Resolve a (possibly outdated) Zenodo record id to the latest version's id."""
+    try:
+        r = requests.get(f"https://zenodo.org/api/records/{record_id}/versions/latest", timeout=30)
+        r.raise_for_status()
+        latest_id = r.json().get("id")
+        if latest_id is not None:
+            return str(latest_id)
+    except requests.RequestException:
+        pass
+    return record_id
 
 def extract_record_id(query: str) -> str | None:
     query = query.strip()
